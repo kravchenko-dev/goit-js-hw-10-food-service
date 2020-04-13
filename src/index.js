@@ -12,7 +12,9 @@ const Theme = {
 };
 
 const setCurrentTheme = function() {
-    body.classList.add(currentTheme);
+    if (currentTheme) {
+        body.classList.add(currentTheme);
+    }
     if (body.classList.contains(Theme.DARK)) {
         themeSwitchControle.checked = true;
     }
@@ -20,11 +22,11 @@ const setCurrentTheme = function() {
 const switchTheme = function() {
     if (themeSwitchControle.checked) {
         body.classList.add(Theme.DARK);
-        body.classList.replace(Theme.LIGHT, Theme.DARK);
+        body.classList.remove(Theme.LIGHT);
         localStorage.setItem('theme', Theme.DARK);
     } else {
         body.classList.add(Theme.LIGHT);
-        body.classList.replace(Theme.DARK, Theme.LIGHT);
+        body.classList.remove(Theme.DARK);
         localStorage.setItem('theme', Theme.LIGHT);
     }
 };
